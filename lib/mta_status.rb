@@ -9,7 +9,7 @@ class MTAStatus
   METRO_NORTH = ["metro-north", "metro", "north"]
 
   def initialize(service)
-    if service!=nil
+    if service
       @service = service.downcase
     else
       @service = "subway"
@@ -53,27 +53,28 @@ class MTAStatus
   end
 
   def service_choice
-    call = []
     if SUBWAY.include?(@service)
-      call.concat(subway)
+      subway
     elsif LIRR.include?(@service)
-      call.concat(lirr)
+      lirr
     elsif METRO_NORTH.include?(@service)
-      call.concat(metro_north)
+      metro_north
     end
   end
 
   def run
     puts
-    puts "############### Status ###############"
+    puts "############ Train Status ############"
     service_choice.each do |line_pair|
-      if line_pair[1]!="GOOD SERVICE"
-        puts "#{line_pair[0].bold}: #{line_pair[1].red}"
-      else
+      if line_pair[1]="GOOD SERVICE"
         puts "#{line_pair[0]}: #{line_pair[1].green}"
+      else
+        puts "#{line_pair[0].bold}: #{line_pair[1].red}"
       end
     end
     puts "######################################"
   end
 
 end
+
+MTAStatus.new("subway")
