@@ -6,7 +6,7 @@ class MTAStatus
 
   SUBWAY = ["subway", "irt", "ind", "bmt", "tube", "train", "underground"]
   LIRR = ["lirr", "long", "island", "rail", "road"]
-  METRO_NORTH = ["metro-north", "metro", "north"]
+  METRO_NORTH = ["metro-north", "metro", "north", "metronorth"]
 
   def initialize(service)
     if SUBWAY.include?(service) || LIRR.include?(service) || METRO_NORTH.include?(service)
@@ -68,13 +68,14 @@ class MTAStatus
     puts Time.now
     puts "#########################"
     service_choice.each do |line_pair|
-      if line_pair[1]="GOOD SERVICE"
-        puts "#{line_pair[0]}: #{line_pair[1].green}"
-      else
+      if line_pair[1]!="GOOD SERVICE"
         puts "#{line_pair[0].bold}: #{line_pair[1].red}"
+      else
+        puts "#{line_pair[0]}: #{line_pair[1].green}"
       end
     end
     puts "#########################"
   end
 
 end
+

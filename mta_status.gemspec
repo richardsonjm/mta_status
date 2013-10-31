@@ -1,6 +1,6 @@
   Gem::Specification.new do |s|
   s.name        = 'mta_status'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.executables << 'mta_status'
   s.date        = '2010-10-21'
   s.summary     = "MTA status"
