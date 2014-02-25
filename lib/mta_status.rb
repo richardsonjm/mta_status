@@ -4,16 +4,11 @@ class MTAStatus
 
   attr_accessor :doc
 
-  SUBWAY = ["subway", "irt", "ind", "bmt", "tube", "train", "underground"]
   LIRR = ["lirr", "long", "island", "rail", "road"]
   METRO_NORTH = ["metro-north", "metro", "north", "metronorth"]
 
   def initialize(service)
-    if SUBWAY.include?(service) || LIRR.include?(service) || METRO_NORTH.include?(service)
-      @service = service.downcase
-    else
-      @service = "subway"
-    end   
+    @service = service.downcase if service
     @doc  = Nokogiri::HTML(open(MTA))
     run
   end
@@ -53,12 +48,12 @@ class MTAStatus
   end
 
   def service_choice
-    if SUBWAY.include?(@service)
-      subway
-    elsif LIRR.include?(@service)
+    if LIRR.include?(@service)
       lirr
     elsif METRO_NORTH.include?(@service)
       metro_north
+    else
+      subway
     end
   end
 

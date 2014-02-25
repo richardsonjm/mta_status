@@ -1,10 +1,10 @@
   Gem::Specification.new do |s|
   s.name        = 'mta_status'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.executables << 'mta_status'
   s.date        = '2010-10-21'
   s.summary     = "MTA status"
-  s.description = "MTA train line status from your terminal"
+  s.description = "CLI for MTA train line status"
   s.authors     = ["John Richardson"]
   s.email       = 'richardsonjm@gmail.com'
   s.files       =  Dir["{config}/*", "{lib}/**/*"]
